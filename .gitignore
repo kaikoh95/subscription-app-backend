@@ -131,3 +131,5 @@ volumes/
 
 .idea
 .DS_Store
+
+stores.json

@@ -1,0 +1,37 @@
+{
+  "customer_id": 10,
+  "first_name": "Ben",
+  "last_name": "Warren",
+  "subscriptions": [
+    {
+      "id": 15532,
+      "frequency": 8,
+      "products": [
+        {
+            "id": 1,
+            "name": "BePure One Daily Multivitamin",
+            "image_link": "https://cdn.shopify.com/s/files/1/1590/6939/products/BePureOne_30Day_BSCG_1500.jpg?v=1606764308",
+            "price": 80.00
+        },
+        {
+            "id": 2,
+            "name": "BePure Three Omega 3 Fish Oil",
+            "image_link": "https://cdn.shopify.com/s/files/1/1590/6939/products/BePureThree_1.jpg?v=1616638467",
+            "price": 60.00
+        },
+        {
+            "id": 4,
+            "name": "BePure Zinc Restore",
+            "image_link": "https://cdn.shopify.com/s/files/1/1590/6939/products/BePureZincRestore_60day_60caps_1500px.jpg?v=1624909136",
+            "price": 35.00
+        },
+        {
+            "id": 5,
+            "name": "BePure Super Boost C",
+            "image_link": "https://cdn.shopify.com/s/files/1/1590/6939/products/BePureSuperBoostC_1500.jpg?v=1606765022",
+            "price": 35.00
+        }
+      ]
+    }
+  ]
+}

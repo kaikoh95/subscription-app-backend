@@ -46,7 +46,7 @@ def convert_to_camel_case(iterable):
             converted.append(convert_to_camel_case(item))
     elif type(iterable) is dict:
         for key, value in iterable.items():
-            if isinstance(value, dict):
+            if type(value) is list or isinstance(value, dict):
                 value = convert_to_camel_case(value)
             converted[to_camel_case(key)] = value
     return converted

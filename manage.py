@@ -1,14 +1,10 @@
 from flask_script import Server, Manager
-from flask_migrate import Migrate, MigrateCommand
-from app.app import app, db
+from app.app import app
 
 
 manager = Manager(app)
-migrate = Migrate(app, db)
 
 server = Server(host="0.0.0.0", port=5000)
-
-manager.add_command("db", MigrateCommand)
 
 
 @manager.command

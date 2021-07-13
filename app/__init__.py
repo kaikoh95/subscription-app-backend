@@ -15,12 +15,12 @@ def create_app():
 
     # Create an APISpec
     spec = APISpec(
-        title="My Api Spec",
+        title="Customer Subscriptions Api Spec",
         version=VERSION,
         openapi_version="2.0.0",
         plugins=[MarshmallowPlugin()],
         info={
-            "description": "Api services and usage guide",
+            "description": "Api services and usage guide for Customer Subscriptions",
         }
     )
     app.config.update({
@@ -32,30 +32,16 @@ def create_app():
 
     # App environment config
     from app.config.base import BaseConfig
-    from app.config.cache import CacheConfig
-    from app.config.db import DbConfig
-    from app.config.redis import RedisConfig
-
     app.config.from_object(BaseConfig)
-    app.config.from_object(DbConfig)
-    app.config.from_object(RedisConfig)
-    app.config.from_object(CacheConfig)
-
-    # Flask Caching
-    from app.services.cache.cache import FlaskCache
-    FlaskCache(app)
 
     # REST API Resource Views
-    from app.test_example.views.test_objects_resource import TestObjectsResource
-    from app.test_example.views.single_test_object_resource import SingleTestObjectResource
+    from app.customer_subscriptions.views.customer_subscriptions_resource import CustomerSubscriptionsResource
 
-    api.add_resource(TestObjectsResource, '/test_example')
-    api.add_resource(SingleTestObjectResource, '/test_example/<id>')
+    api.add_resource(CustomerSubscriptionsResource, '/customers/<customer_id>/subscriptions/<subscription_id>')
 
     # Register specs
     with app.test_request_context():
-        docs.register(TestObjectsResource)
-        docs.register(SingleTestObjectResource)
+        docs.register(CustomerSubscriptionsResource)
 
     # Default routes
     @app.route('/', methods=['GET'])

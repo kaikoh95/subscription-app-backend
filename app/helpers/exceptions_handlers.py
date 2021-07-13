@@ -28,6 +28,11 @@ def exception_handler(func):
             if "unique constraint failed" in error.lower():
                 message = "Database Error: Duplicated fields found when saving item to db"
             abort(BAD_REQUEST, error=f"{message} - {str(e)}")
+        except LoadFromDbError as e:
+            error = f"{str(e)} in {func.__qualname__}"
+            current_app.logger.error(error)
+            message = "Database Error: Error loading from db"
+            abort(BAD_REQUEST, error=f"{message} - {str(e)}")
         except Exception as e:
             error = f"Exception in {func.__qualname__} - {str(e)}"
             current_app.logger.error(error)
@@ -43,4 +48,9 @@ class ExceptionWithoutAbort(Exception):
 
 class SaveToDbError(Exception):
     """Error when saving to db"""
+    pass
+
+
+class LoadFromDbError(Exception):
+    """Error when loading from db"""
     pass

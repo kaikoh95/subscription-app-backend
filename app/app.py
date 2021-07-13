@@ -1,10 +1,8 @@
 import uuid
 from flask import g, request
 from . import create_app
-from .config.db import db
 
 app = create_app()
-db.init_app(app)
 
 """Configure global hash for all API requests."""
 
@@ -24,13 +22,3 @@ def set_request_hash(*args, **kwargs):
     -----""")
     g.event_hash = str(uuid.uuid4())
     print('after request', g.__dict__)
-
-
-@app.before_first_request
-def initialize_database():
-    db.create_all()
-
-
-@app.teardown_appcontext
-def shutdown_session(exception=None):
-    db.session.remove()
